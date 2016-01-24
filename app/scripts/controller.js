@@ -1,6 +1,6 @@
  /*
   * Tyler Deans
-  * 11/12/15
+  * January 23, 2016
   * controller.js
   */
 
@@ -55,16 +55,15 @@
 
 
  SimController.prototype.setupDisplay = function() {
-     // create a brand new let expression
-    this.simModel.letExpression.randomLetExpression();
+    this.simModel.typeInference.randomExpression();
     // choose a question randomly
     var question = this.simModel.questionBank.chooseQuestion(this.getModelValue('firstQuestion'), this.getModelValue('lastQuestion'));
     // store the answer(s) to the question we chose in the last step
-    this.simModel.questionBank.setAnswers(this.simModel.letExpression);
+    this.simModel.questionBank.setAnswers(this.simModel.typeInference);
     // draw the results for the last five questions
     this.simView.questionBankView.drawAnswerHistory(this.simModel.questionBank.answerHistory);
     // draw the let expression on the screen
-    this.simView.letExpressionView.drawLetExpression(this.simModel.letExpression);
+    this.simView.typeInferenceView.drawExpression(this.simModel.typeInference);
     // display the next question
     this.simView.questionBankView.presentQuestion(question);
  }

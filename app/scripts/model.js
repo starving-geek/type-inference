@@ -14,6 +14,12 @@
  * I use this function to empty out all of the arrays that
  * I use in this program.
  */
+
+ /*
+	* January 23, 2016
+	* Tyler Deans
+	* I tweaked the initializeModel method I needed to pass an TypeInferenceModel object
+ */
 function emptyOutArray(myArray) {
 	myArray.length = 0;
 }
@@ -61,10 +67,9 @@ SimModel.prototype = new pipit.CapiAdapter.CapiModel;
 
 
 SimModel.prototype.initializeModel = function() {
-	// the let expression is used to answer questions
-	this.letExpression = new LetExpressionModel(this);
+	this.typeInference = new TypeInferenceModel(this);
 	// the question bank stores the questions, the answers and the student's
 	// answer history
 	this.questionBank = new QuestionBankModel(this, this.get('numerator'),
-				this.get('denominator'));
+				this.get('denominator'), this.typeInference);
 }

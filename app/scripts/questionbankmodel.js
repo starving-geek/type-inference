@@ -1,6 +1,6 @@
 /*
  * Tyler Deans
- * 11/13/15
+ * January 23, 2016
  * questionbankmodel.js
  */
 
@@ -9,7 +9,7 @@
  * Stores the questions, answers and the answer history
  */
 
-function QuestionBankModel(_simModel, _numerator, _denominator) {
+function QuestionBankModel(_simModel, _numerator, _denominator, typeInference) {
     // save a link to the model
     this.simModel = _simModel;
     // the number of questions the student needs to answer right...
@@ -21,7 +21,7 @@ function QuestionBankModel(_simModel, _numerator, _denominator) {
     // stores as many answers as we're willing to consider
     this.resetAnswerHistory();
     // create the question list
-    this.createNewQuestions();
+    this.createNewQuestions(typeInference);
 }
 
 
@@ -73,10 +73,8 @@ QuestionBankModel.prototype.masteryAchieved = function() {
  * Compare the student's answer to the correct answer.
  */
 QuestionBankModel.prototype.checkAnswer = function(studentAnswer) {
-    // Converts studentAnswer from a string to an integer
-    var studentAnswerInt = parseInt(studentAnswer);
     for (var i = 0; i < this.answers.length; i++) {
-        if (this.answers[i] === studentAnswerInt) {
+        if (this.answers[i] === studentAnswer) {
             return true;
         }
     }
@@ -88,15 +86,18 @@ QuestionBankModel.prototype.checkAnswer = function(studentAnswer) {
 /*
  * Create a new set of question templateString
  */
-QuestionBankModel.prototype.createNewQuestions = function() {
+// Make sure any calls to this method passes a TypeInferenceModel object
+QuestionBankModel.prototype.createNewQuestions = function(typeInference) {
     // Each question template is an array holding either strings
     // or executable commands stored as strings.
     this.questions = [
-        ["What is the type of e1?"],
-        ["What is the type of e2?"],
-        ["What is the type of e3?"],
-        ["What is returned when the following Racket code is evaluated?"],
-        ["What is returned when the following Racket code is evaluated?"],
+        [typeInference.getQuestion()],
+        [typeInference.getQuestion()],
+        [typeInference.getQuestion()],
+        [typeInference.getQuestion()], 
+        [typeInference.getQuestion()],
+        [typeInference.getQuestion()],
+        [typeInference.getQuestion()],
     ];
     // the question index is used to rotate through the questions
     this.questionIndex = 0;
@@ -124,7 +125,7 @@ QuestionBankModel.prototype.chooseQuestion = function(_firstQuestion, _lastQuest
         // add it to the question string
         this.question = this.question + templateString;
     }
-    this.question += " Indicate your answer by typing in an integer value.";
+    this.question += " Indicate your answer by entering in the type (int, bool, or string).";
     //console.log(this.question);
     return this.question;
 }
@@ -135,24 +136,33 @@ QuestionBankModel.prototype.chooseQuestion = function(_firstQuestion, _lastQuest
  * Right now I'm using a really clunky approach. I'm sure there's
  * a better way.
  */
-QuestionBankModel.prototype.setAnswers = function(_letExpression) {
+QuestionBankModel.prototype.setAnswers = function(_typeInference) {
     // Reset answers array
     this.answers = [];
     // Adds the answers to the question to the answers array
     // Set the answer(s) to the question indicated by questionIndex.
 
     if (this.questionIndex == 0) {
-        this.answers.push(_letExpression.randomLetExpression());
+        this.answers.push(_typeInference.randomExpression());
 
     } else if (this.questionIndex == 1) {
-        this.answers.push(_letExpression.randomLetExpression());
+        this.answers.push(_typeInference.randomExpression());
 
     } else if (this.questionIndex == 2) {
-        this.answers.push(_letExpression.randomLetExpression());
+        this.answers.push(_typeInference.randomExpression());
 
     } else if (this.questionIndex == 3) {
-        this.answers.push(_letExpression.randomLetExpression());
+        this.answers.push(_typeInference.randomExpression());
+
+    } else if (this.questionIndex == 4) {
+        this.answers.push(_typeInference.randomExpression());
+
+    } else if (this.questionIndex == 5) {
+        this.answers.push(_typeInference.randomExpression());
+
     } else {
-        this.answers.push(_letExpression.randomLetExpression());
-    }
+        this.answers.push(_typeInference.randomExpression());
+
+    } 
+
 }

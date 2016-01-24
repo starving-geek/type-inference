@@ -1,7 +1,8 @@
 /*
  * main.js
+ * Rich Simpson
  * Tyler Deans 
- * November 12, 2015
+ * January 23, 2016
  * This code implements a mastery-based exercise on graph
  * theory for integration with Smart Sparrow.
  *
@@ -22,8 +23,7 @@ function SimView(_controller) {
     // create the question bank view - where questions and answer history are
     // displayed
     this.questionBankView = new QuestionBankView(this);
-    // create the let expression view - a let expression
-    this.letExpressionView = new LetExpressionView(this);
+    this.typeInferenceView = new TypeInferenceView(this);
 }
 
 
@@ -92,7 +92,7 @@ SimView.prototype.setupControls = function() {
         // clear the feedback from the last question
         $( "#txtFeedback" ).html('');
         // clear the fringe
-        $( "#letExpressionDiv" ).html('');
+        $( "#typeInferenceDiv" ).html('');
         // pass off to the controller to create and display a
         // new let expression and new question
         simController.setupDisplay();
