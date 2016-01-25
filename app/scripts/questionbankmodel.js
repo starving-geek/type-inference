@@ -91,13 +91,13 @@ QuestionBankModel.prototype.createNewQuestions = function(typeInference) {
     // Each question template is an array holding either strings
     // or executable commands stored as strings.
     this.questions = [
-        [typeInference.getQuestion()],
-        [typeInference.getQuestion()],
-        [typeInference.getQuestion()],
-        [typeInference.getQuestion()], 
-        [typeInference.getQuestion()],
-        [typeInference.getQuestion()],
-        [typeInference.getQuestion()],
+        ["Indicate your answer by entering in the type (int, bool, or string)."],
+        ["Indicate your answer by entering in the type (int, bool, or string)."],
+        ["Indicate your answer by entering in the type (int, bool, or string)."],
+        ["Indicate your answer by entering in the type (int, bool, or string)."],
+        ["Indicate your answer by entering in the type (int, bool, or string)."],
+        ["Indicate your answer by entering in the type (int, bool, or string)."],
+        ["Indicate your answer by entering in the type (int, bool, or string)."],
     ];
     // the question index is used to rotate through the questions
     this.questionIndex = 0;
@@ -125,7 +125,6 @@ QuestionBankModel.prototype.chooseQuestion = function(_firstQuestion, _lastQuest
         // add it to the question string
         this.question = this.question + templateString;
     }
-    this.question += " Indicate your answer by entering in the type (int, bool, or string).";
     //console.log(this.question);
     return this.question;
 }

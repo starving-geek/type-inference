@@ -49,65 +49,65 @@ TypeInferenceModel.prototype.randomExpression = function() {
     if (questionType === "addition") {
         if (randomVar == 1) {
             this.typeInferenceString = "<pre>val e1 = e2 + e3" + "\n" + "</pre></br>";
-            this.question = "What is the type of " + string1 + "?";
-      
+            this.question = "<h3>What is the type of " + string1 + "?</h3>";
+      		this.typeInferenceString += this.question;
             return "int";
 
         } else if (randomVar == 2) {
             this.typeInferenceString = "<pre>val e1 = e2 + e3" + "\n" +"</pre></br>";
-            this.question = "What is the type of " + string2 + "?";
-            
+            this.question = "<h3>What is the type of " + string2 + "?</h3>";
+            this.typeInferenceString += this.question;
             return "int";
         } else {
             this.typeInferenceString = "<pre>val e1 = e2 + e3" + "\n" + "</pre></br>";
-            this.question = "What is the type of " + string3 + "?";
-            
+            this.question = "<h3>What is the type of " + string3 + "?</h3>";
+            this.typeInferenceString += this.question;
             return "int";
         }
     } else if (questionType === "multiplcation") {
     	if (randomVar == 1) {
             this.typeInferenceString = "<pre>val e1 = e2 * e3" + "\n" +"</pre></br>";
-            this.question = "What is the type of " + string1 + "?";
-            
+            this.question = "<h3>What is the type of " + string1 + "?</h3>";
+            this.typeInferenceString += this.question;
             return "int";
         } else if (randomVar == 2) {
             this.typeInferenceString = "<pre>val e1 = e2 * e3" + "\n" + "</pre></br>";
-            this.question = "What is the type of " + string2 + "?";
-            
+            this.question = "<h3>What is the type of " + string2 + "?</h3>";
+            this.typeInferenceString += this.question;
             return "int";
         } else {
             this.typeInferenceString = "<pre>val e1 = e2 * e3" + "\n" + "</pre></br>";
-            this.question = "What is the type of " + string3 + "?";
-            
+            this.question = "<h3>What is the type of " + string3 + "?</h3>";
+            this.typeInferenceString += this.question;
             return "int";
         }
     } else if (questionType === "condition") {
     	if (randomVar == 1) {
             this.typeInferenceString = "<pre>val e1 = e2 < e3" + "\n" + "</pre></br>";
-            this.question = "What is the type of " + string1 + "?";
-            
+            this.question = "<h3>What is the type of " + string1 + "?</h3>";
+            this.typeInferenceString += this.question;
             return "bool"
         } else if (randomVar == 2) {
             this.typeInferenceString = "<pre>val e1 = e2 < e3" + "\n" + "</pre></br>";
-            this.question = "What is the type of " + string2 + "?";
-            
+            this.question = "<h3>What is the type of " + string2 + "?</h3>";
+            this.typeInferenceString += this.question;
             return "int";
         } else {
             this.typeInferenceString = "<pre>val e1 = e2 < e3" + "\n" + "</pre></br>";
-            this.question = "What is the type of " + string3 + "?";
-            
+            this.question = "<h3>What is the type of " + string3 + "?</h3>";
+            this.typeInferenceString += this.question;
             return "int";
         }
     } else {
     	if (randomVar == 1) {
             this.typeInferenceString = "<pre>if e1 then e2 else e3" + "\n" + "</pre></br>";
-            this.question = "What is the type of " + string1 + "?";
-            
+            this.question = "<h3>What is the type of " + string1 + "?</h3>";
+            this.typeInferenceString += this.question;
             return "bool";
         } else if (randomVar == 2) {
             this.typeInferenceString = "<pre>if e1 then e2 else e3" + "\n" + "</pre></br>";
-            this.question = "If e2 is type " + varType + " , what is the type of e3?";
-
+            this.question = "<h3>If e2 is type " + varType + " , what is the type of e3?</h3>";
+            this.typeInferenceString += this.question;
             if (varType === "string") {
             	return "string";
             } else if (varType === "bool") {
