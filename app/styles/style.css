@@ -34,6 +34,10 @@ body{
 	display: none;
 }
 
+#questionType {
+	display: none;
+}
+
 .answerBlock{
 	width:30px;
 	height:30px;

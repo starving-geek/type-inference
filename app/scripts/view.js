@@ -2,7 +2,7 @@
  * main.js
  * Rich Simpson
  * Tyler Deans 
- * January 23, 2016
+ * January 27, 2016
  * This code implements a mastery-based exercise on graph
  * theory for integration with Smart Sparrow.
  *
@@ -38,6 +38,7 @@ SimView.prototype.setupControls = function() {
         $( "#historyText" ).show();
         $( "#btnNextQuestion" ).show();
         $( "#btnSubmit" ).show();
+        $( "#questionType" ).show();
         // disable start button
         $( "#btnStart" ).prop('disabled', true);
         // enable submit button
