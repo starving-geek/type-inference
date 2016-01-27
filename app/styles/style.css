@@ -15,10 +15,23 @@ body{
 
 #txtAnswer {
 	font-size: 24px;
+	display: none;
 }
 
 #txtFeedback {
 	font-size: 24px;
+}
+
+#historyText {
+	display: none;
+}
+
+#btnNextQuestion {
+	display: none;
+}
+
+#btnSubmit {
+	display: none;
 }
 
 .answerBlock{
@@ -44,7 +57,5 @@ body{
 pre {
 	
 	font-size: 14px;
-
-
 }
 

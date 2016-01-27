@@ -31,6 +31,13 @@ SimView.prototype.setupControls = function() {
     $( "#btnStart" ).click(function() {
         // finish initializing the app
         simController.initializeController();
+        /* The text area, submit and next question buttons
+         * remain hidden until the start app button is clicked.
+        */
+        $( "#txtAnswer" ).show();
+        $( "#historyText" ).show();
+        $( "#btnNextQuestion" ).show();
+        $( "#btnSubmit" ).show();
         // disable start button
         $( "#btnStart" ).prop('disabled', true);
         // enable submit button

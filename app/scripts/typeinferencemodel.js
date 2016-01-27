@@ -16,7 +16,7 @@ function getQuestionType() {
     if (randomQuestion === 1) {
         return "addition";
     } else if (randomQuestion === 2) {
-        return "multiplcation";
+        return "multiplication";
     } else if (randomQuestion === 3) {
         return "condition";
     } else  {
@@ -64,7 +64,7 @@ TypeInferenceModel.prototype.randomExpression = function() {
             this.typeInferenceString += this.question;
             return "int";
         }
-    } else if (questionType === "multiplcation") {
+    } else if (questionType === "multiplication") {
         if (randomVar === 1) {
             this.typeInferenceString = "<pre>val e1 = e2 * e3</pre></br>";
             this.question = "<h3>What is the type of " + string1 + "?</h3>";
@@ -104,8 +104,8 @@ TypeInferenceModel.prototype.randomExpression = function() {
             this.question = "<h3>What is the type of " + string1 + "?</h3>";
             this.typeInferenceString += this.question;
             return "bool";
-        } else if (randomVar == 2 || randomVar == 3) {
-            if (randomVar == 2) {
+        } else if (randomVar === 2 || randomVar === 3) {
+            if (randomVar === 2) {
                 this.typeInferenceString = "<pre>if e1 then e2 else e3</pre></br>";
                 this.question = "<h3>If e2 is type " + varType + ", what is the type of e3?</h3>";
                 this.typeInferenceString += this.question;
@@ -117,9 +117,9 @@ TypeInferenceModel.prototype.randomExpression = function() {
                 } else {
                     return "int";
                 }
-            } else if (randomVar == 2) {                
+            } else if (randomVar === 3) {                
                 this.typeInferenceString = "<pre>if e1 then e2 else e3</pre></br>";
-                this.question = "<h3>If e2 is type " + varType + ", what is the type of e3?</h3>";
+                this.question = "<h3>If e3 is type " + varType + ", what is the type of e2?</h3>";
                 this.typeInferenceString += this.question;
 
                 if (varType === "string") {
